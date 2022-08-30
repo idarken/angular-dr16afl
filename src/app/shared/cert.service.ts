@@ -17,4 +17,12 @@ export class CertService {
   setSelectedItem(item: TempData) {
     this._selectedItem.next(item);
   }
+
+  parseCert(file) {
+    const result = ASN1.decode(certData);
+    if (result.typeName() !== 'SEQUENCE') {
+      throw 'Неправильна структура конверта сертифіката (очікується SEQUENCE)';
+    }
+    const tbsCertificate = result.sub[0];
+  }
 }
