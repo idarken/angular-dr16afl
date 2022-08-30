@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { switchMap, take, tap } from 'rxjs/operators';
 
 import ASN1 from '@lapo/asn1js';
 import { CertData } from './certificate.model';

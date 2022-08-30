@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CertService } from './shared/cert.service';
 import { ModeService, AppMode } from './shared/mode.service';
 
 @Component({
