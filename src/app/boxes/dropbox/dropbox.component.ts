@@ -8,10 +8,7 @@ import { ModeService } from 'src/app/shared/mode.service';
   styleUrls: ['./dropbox.component.css'],
 })
 export class DropboxComponent {
-  constructor(
-    private certService: CertService,
-    private modeService: ModeService
-  ) {}
+  constructor(private certService: CertService) {}
 
   fileHandler($event: any) {
     if ($event instanceof FileList) {
