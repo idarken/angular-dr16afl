@@ -8,12 +8,9 @@ import { ModeService } from './shared/mode.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  mode: 'drop' | 'select' = 'select';
+  mode!: 'drop' | 'select';
 
-  constructor(
-    private certService: CertService,
-    private modeService: ModeService
-  ) {
+  constructor(private modeService: ModeService) {
     this.modeService.mode.subscribe((mode) => {
       this.mode = mode;
     });

@@ -1,10 +1,6 @@
-<div class="wrapper" ngClass="{{ dragAreaClass }}">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      Drag files here
-      <a href="#" (click)="file.click()"> or click to open </a>
-      <input type="file" #file [multiple]="false" (change)="onFileChange($event)" style="display:none" />
-    </div>
-  </div>
+<div class="wrapper dropbox" appDragAndDrop (fileDropped)="fileHandler($event)">
+  <input type="file" #fileDropInput id="fileDropInput" multiple (change)="fileHandler($event)" />
+  <div>Drag files here</div>
+  <div>or</div>
+  <label for="fileDropInput">Browse for file</label>
 </div>
-<div class="error" *ngIf="error">Only one file at time allow</div>

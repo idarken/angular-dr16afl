@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ModeService {
-  private _mode = new BehaviorSubject<'drop' | 'select'>('select');
+  private _mode = new BehaviorSubject<'drop' | 'select'>('drop');
 
   constructor() {}
 

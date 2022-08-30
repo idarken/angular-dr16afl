@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { DragAndDropDirective } from './shared/drag-and-drop.directive';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
     DropboxComponent,
     TextboxComponent,
     SelectorComponent,
+    DragAndDropDirective,
   ],
   imports: [BrowserModule],
   providers: [],

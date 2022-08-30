@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TempData } from 'src/app/shared/cart.model';
 import { CertService } from 'src/app/shared/cert.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { CertService } from 'src/app/shared/cert.service';
   styleUrls: ['./textbox.component.css'],
 })
 export class TextboxComponent implements OnInit {
-  selectedItem!: TempData;
+  selectedItem!: any;
   dataLoaded = false;
 
   constructor(private certService: CertService) {}

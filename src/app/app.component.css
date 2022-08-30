@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  padding: 5px;
+}
+
+.col {
+  width: 50%;
+  padding: 5px;
+}

@@ -1,36 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { TempData } from '../shared/cart.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CertData } from '../shared/certificate.model';
 import { CertService } from '../shared/cert.service';
 import { ModeService } from '../shared/mode.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-selector',
   templateUrl: './selector.component.html',
   styleUrls: ['./selector.component.css'],
 })
-export class SelectorComponent implements OnInit {
+export class SelectorComponent implements OnInit, OnDestroy {
   mode: 'drop' | 'select' = 'select';
-  list: TempData[] = [
-    {
-      commonName: '1',
-      issuerName: '2',
-      validFrom: new Date(),
-      validTill: new Date(),
-    },
-    {
-      commonName: '3',
-      issuerName: '4',
-      validFrom: new Date(),
-      validTill: new Date(),
-    },
-    {
-      commonName: '5',
-      issuerName: '6',
-      validFrom: new Date(),
-      validTill: new Date(),
-    },
-  ];
-  selectedItem!: TempData;
+  list: CertData[] = [];
+  selectedItem!: CertData | null;
+
+  certSub!: Subscription;
 
   constructor(
     private certService: CertService,
@@ -38,20 +22,29 @@ export class SelectorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.certService.setSelectedItem(this.list[0]);
-    this.selectedItem = this.list[0];
     this.modeService.mode.subscribe((mode) => {
       this.mode = mode;
     });
+    this.certSub = this.certService
+      .getCertificates()
+      .subscribe((certificates) => {
+        console.log(certificates);
+        if (certificates) {
+          this.list = certificates;
+          this.selectedItem = this.list[0];
+          this.certService.setSelectedItem(this.list[0]);
+        }
+      });
   }
 
   itemId(index: number, item: any) {
     return item;
   }
 
-  selectItem(item: TempData) {
+  selectItem(item: CertData) {
     this.certService.setSelectedItem(item);
     this.selectedItem = item;
+    this.onCancel();
   }
 
   onAddNew() {
@@ -62,7 +55,11 @@ export class SelectorComponent implements OnInit {
     this.modeService.setMode('select');
   }
 
-  isActive(item: TempData) {
+  isActive(item: CertData) {
     return item === this.selectedItem;
+  }
+
+  ngOnDestroy(): void {
+    if (this.certSub) this.certSub.unsubscribe();
   }
 }
