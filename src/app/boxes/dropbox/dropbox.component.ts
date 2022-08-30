@@ -6,8 +6,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./dropbox.component.css'],
 })
 export class DropboxComponent implements OnInit {
-  error: string;
-  dragAreaClass: string;
+  error!: string;
+  dragAreaClass!: string;
   onFileChange(event: any) {
     let files: FileList = event.target.files;
     this.saveFiles(files);

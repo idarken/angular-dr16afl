@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class CertService {
-  private _selectedItem = new BehaviorSubject<TempData>(null);
+  private _selectedItem = new BehaviorSubject<TempData | null>(null);
 
   constructor() {}
 

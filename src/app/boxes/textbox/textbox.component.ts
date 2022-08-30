@@ -8,7 +8,7 @@ import { CertService } from 'src/app/shared/cert.service';
   styleUrls: ['./textbox.component.css'],
 })
 export class TextboxComponent implements OnInit {
-  selectedItem: TempData;
+  selectedItem!: TempData;
   dataLoaded = false;
 
   constructor(private certService: CertService) {}

@@ -30,7 +30,7 @@ export class SelectorComponent implements OnInit {
       validTill: new Date(),
     },
   ];
-  selectedItem: TempData = null;
+  selectedItem!: TempData;
 
   constructor(
     private certService: CertService,
