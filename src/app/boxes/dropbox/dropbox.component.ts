@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CertService } from 'src/app/shared/cert.service';
+import { ModeService } from 'src/app/shared/mode.service';
 
 @Component({
   selector: 'app-dropbox',
@@ -7,7 +8,10 @@ import { CertService } from 'src/app/shared/cert.service';
   styleUrls: ['./dropbox.component.css'],
 })
 export class DropboxComponent {
-  constructor(private certService: CertService) {}
+  constructor(
+    private certService: CertService,
+    private modeService: ModeService
+  ) {}
 
   fileHandler($event: any) {
     if ($event instanceof FileList) {

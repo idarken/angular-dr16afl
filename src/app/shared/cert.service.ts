@@ -4,6 +4,7 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 
 import ASN1 from '@lapo/asn1js';
 import { CertData } from './certificate.model';
+import { ModeService } from './mode.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class CertService {
   private _selectedItem = new BehaviorSubject<CertData | null>(null);
   private _loadedCertificates = new BehaviorSubject<CertData[] | null>(null);
 
-  constructor() {}
+  constructor(private modeService: ModeService) {}
 
   get selectedItem() {
     return this._selectedItem.asObservable();
@@ -35,7 +36,11 @@ export class CertService {
           return this._loadedCertificates;
         }
       }),
-      map((certs) => certs)
+      tap((certs) => {
+        if (!certs) {
+          this.modeService.setMode('empty');
+        }
+      })
     );
   }
 
@@ -66,6 +71,7 @@ export class CertService {
           certs.push(new CertData(result));
           this._loadedCertificates.next(certs);
           localStorage.setItem('certificates', JSON.stringify(certs));
+          this.modeService.setMode('select');
         })
       )
       .subscribe();

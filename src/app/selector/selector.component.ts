@@ -1,3 +1,4 @@
+import { AppMode } from './../shared/mode.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CertData } from '../shared/certificate.model';
 import { CertService } from '../shared/cert.service';
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./selector.component.css'],
 })
 export class SelectorComponent implements OnInit, OnDestroy {
-  mode: 'drop' | 'select' = 'select';
+  mode: AppMode = 'select';
   list: CertData[] = [];
   selectedItem!: CertData | null;
 

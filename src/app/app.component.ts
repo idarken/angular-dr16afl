@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CertService } from './shared/cert.service';
-import { ModeService } from './shared/mode.service';
+import { ModeService, AppMode } from './shared/mode.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { ModeService } from './shared/mode.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  mode!: 'drop' | 'select';
+  mode!: AppMode;
 
   constructor(private modeService: ModeService) {
     this.modeService.mode.subscribe((mode) => {

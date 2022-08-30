@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export type AppMode = 'drop' | 'select' | 'empty';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ModeService {
-  private _mode = new BehaviorSubject<'drop' | 'select'>('drop');
+  private _mode = new BehaviorSubject<AppMode>('select');
 
   constructor() {}
 
@@ -13,7 +15,7 @@ export class ModeService {
     return this._mode.asObservable();
   }
 
-  setMode(mod: 'drop' | 'select') {
+  setMode(mod: AppMode) {
     this._mode.next(mod);
   }
 }

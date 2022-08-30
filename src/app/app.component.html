@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="col">
-    <app-selector></app-selector>
-  </div>
-  <div class="col">
-    <ng-container *ngIf="mode === 'select'">
-      <app-textbox></app-textbox>
-    </ng-container>
-    <ng-container *ngIf="mode === 'drop'">
-      <app-dropbox></app-dropbox>
-    </ng-container>
+  <ng-container *ngIf="mode !== 'empty'">
+    <div class="col">
+      <app-selector></app-selector>
+    </div>
+    <div class="col">
+      <ng-container *ngIf="mode === 'select'">
+        <app-textbox></app-textbox>
+      </ng-container>
+      <ng-container *ngIf="mode === 'drop'">
+        <app-dropbox></app-dropbox>
+      </ng-container>
+    </div>
+  </ng-container>
+  <div class="local-empty-placeholder" *ngIf="mode === 'empty'">
+    <app-dropbox></app-dropbox>
   </div>
 </div>
