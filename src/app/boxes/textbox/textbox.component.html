@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <ng-container *ngIf="dataLoaded">
+    <div>Common Name: {{ selectedItem.commonName }}</div>
+    <div>Issuer Name: {{ selectedItem.issuerName }}</div>
+    <div>Valid From: {{ selectedItem.validFrom | date: 'mediumDate' }}</div>
+    <div>Valid Till: {{ selectedItem.validTill | date: 'mediumDate' }}</div>
+  </ng-container>
+</div>

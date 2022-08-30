@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <ng-container *ngFor="let item of list; trackBy: itemId">
+    <div
+      class="item {{ isActive(item) ? 'active' : '' }}"
+      (click)="selectItem(item)"
+    >
+      {{ item.commonName }}
+    </div>
+  </ng-container>
+</div>
+<div class="button-wrapper">
+  <button (click)="onAddNew()" *ngIf="mode === 'select'">Add</button>
+  <button (click)="onCancel()" *ngIf="mode === 'drop'">Cancel</button>
+</div>
