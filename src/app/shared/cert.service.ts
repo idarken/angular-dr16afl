@@ -62,7 +62,6 @@ export class CertService {
     if (result.sub[0].sub[0].sub[0].content() !== '2') {
       throw new Error('Не вірна версія сертифіката');
     }
-    console.log(new CertData(result).tbsCertificate);
     this.loadedCertificates
       .pipe(
         take(1),

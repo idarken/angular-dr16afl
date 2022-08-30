@@ -29,7 +29,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
     this.certSub = this.certService
       .getCertificates()
       .subscribe((certificates) => {
-        console.log(certificates);
         if (certificates) {
           this.list = certificates;
           this.selectedItem = this.list[0];
