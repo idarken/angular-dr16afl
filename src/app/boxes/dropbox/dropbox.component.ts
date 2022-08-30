@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CertService } from 'src/app/shared/cert.service';
-import { ModeService } from 'src/app/shared/mode.service';
+import { CertService } from '../../app/shared/cert.service';
 
 @Component({
   selector: 'app-dropbox',

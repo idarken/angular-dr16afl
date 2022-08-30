@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CertService } from 'src/app/shared/cert.service';
+import { CertService } from '../../shared/cert.service';
 
 @Component({
   selector: 'app-textbox',
