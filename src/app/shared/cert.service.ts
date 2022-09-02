@@ -37,9 +37,9 @@ export class CertService {
         }
       }),
       tap((certs) => {
-        if (!certs) {
-          this.modeService.setMode('empty');
-        }
+        // if (!certs) {
+        //   this.modeService.setMode('empty');
+        // }
       })
     );
   }
@@ -62,15 +62,14 @@ export class CertService {
     if (result.sub[0].sub[0].sub[0].content() !== '2') {
       throw new Error('Не вірна версія сертифіката');
     }
-    console.log(new CertData(result).tbsCertificate);
     this.loadedCertificates
       .pipe(
         take(1),
         tap((certs) => {
-          const resArray = certs ? [...certs] : [];
-          resArray.push(new CertData(result));
-          this._loadedCertificates.next(resArray);
-          localStorage.setItem('certificates', JSON.stringify(resArray));
+          if (!certs) certs = [];
+          certs.push(new CertData(result));
+          this._loadedCertificates.next([...certs]);
+          localStorage.setItem('certificates', JSON.stringify(certs));
           this.modeService.setMode('select');
         })
       )

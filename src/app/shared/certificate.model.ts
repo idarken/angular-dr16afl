@@ -38,6 +38,8 @@ export class CertData {
         subject: subject,
         subjectPublicKeyInfo: subjectPublicKeyInfo,
       };
+
+      delete this.asn1;
     } catch (e) {
       throw new Error('Failed to parse the certificate');
     }

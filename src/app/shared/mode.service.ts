@@ -7,7 +7,7 @@ export type AppMode = 'drop' | 'select' | 'empty';
   providedIn: 'root',
 })
 export class ModeService {
-  private _mode = new BehaviorSubject<AppMode>('empty');
+  private _mode = new BehaviorSubject<AppMode>('drop');
 
   constructor() {}
 
