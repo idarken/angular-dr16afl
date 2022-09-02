@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CertService } from '../../shared/cert.service';
+import { CertData } from '../../shared/certificate.model';
 
 @Component({
   selector: 'app-textbox',
@@ -7,7 +8,7 @@ import { CertService } from '../../shared/cert.service';
   styleUrls: ['./textbox.component.css'],
 })
 export class TextboxComponent implements OnInit {
-  selectedItem!: any;
+  selectedItem!: CertData;
   dataLoaded = false;
 
   constructor(private certService: CertService) {}

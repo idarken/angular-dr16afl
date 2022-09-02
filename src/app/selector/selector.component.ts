@@ -32,11 +32,14 @@ export class SelectorComponent implements OnInit, OnDestroy {
       .subscribe((certificates) => {
         if (certificates) {
           this.list = certificates;
-          this.selectedItem = this.list[0];
           this.certService.setSelectedItem(this.list[0]);
           this.ref.detectChanges();
         }
       });
+    this.certService.selectedItem.subscribe((s) => {
+      this.selectedItem = s;
+      this.ref.detectChanges();
+    });
   }
 
   itemId(index: number, item: any) {
@@ -45,8 +48,6 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   selectItem(item: CertData) {
     this.certService.setSelectedItem(item);
-    this.selectedItem = item;
-    this.onCancel();
   }
 
   onAddNew() {
@@ -55,6 +56,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   onCancel() {
     this.modeService.setMode('select');
+    this.onCancel();
   }
 
   isActive(item: CertData) {
