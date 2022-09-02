@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.modeService.mode.subscribe((mode) => {
-      console.log(mode);
       this.mode = mode;
     });
   }
