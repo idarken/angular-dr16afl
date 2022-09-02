@@ -1,5 +1,5 @@
 import { AppMode } from './../shared/mode.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CertData } from '../shared/certificate.model';
 import { CertService } from '../shared/cert.service';
 import { ModeService } from '../shared/mode.service';
@@ -19,7 +19,8 @@ export class SelectorComponent implements OnInit, OnDestroy {
 
   constructor(
     private certService: CertService,
-    private modeService: ModeService
+    private modeService: ModeService,
+    private ref: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -33,6 +34,7 @@ export class SelectorComponent implements OnInit, OnDestroy {
           this.list = certificates;
           this.selectedItem = this.list[0];
           this.certService.setSelectedItem(this.list[0]);
+          this.ref.detectChanges();
         }
       });
   }

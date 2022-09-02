@@ -68,7 +68,7 @@ export class CertService {
         tap((certs) => {
           if (!certs) certs = [];
           certs.push(new CertData(result));
-          this._loadedCertificates.next(certs);
+          this._loadedCertificates.next([...certs]);
           localStorage.setItem('certificates', JSON.stringify(certs));
           this.modeService.setMode('select');
         })
