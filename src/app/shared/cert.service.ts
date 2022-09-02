@@ -66,10 +66,10 @@ export class CertService {
       .pipe(
         take(1),
         tap((certs) => {
-          if (!certs) certs = [];
-          certs.push(new CertData(result));
-          this._loadedCertificates.next([...certs]);
-          localStorage.setItem('certificates', JSON.stringify(certs));
+          const resArray = certs ? [...certs] : [];
+          resArray.push(new CertData(result));
+          this._loadedCertificates.next(resArray);
+          localStorage.setItem('certificates', JSON.stringify(resArray));
           this.modeService.setMode('select');
         })
       )
