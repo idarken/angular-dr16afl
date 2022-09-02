@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ModeService, AppMode } from './shared/mode.service';
 
 @Component({
@@ -9,11 +9,15 @@ import { ModeService, AppMode } from './shared/mode.service';
 export class AppComponent implements OnInit {
   mode!: AppMode;
 
-  constructor(private modeService: ModeService) {}
+  constructor(
+    private modeService: ModeService,
+    private ref: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.modeService.mode.subscribe((mode) => {
       this.mode = mode;
+      this.ref.detectChanges();
     });
   }
 }
