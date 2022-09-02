@@ -11,6 +11,7 @@ export class AppComponent {
 
   constructor(private modeService: ModeService) {
     this.modeService.mode.subscribe((mode) => {
+      console.log(mode);
       this.mode = mode;
     });
   }

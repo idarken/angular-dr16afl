@@ -37,9 +37,9 @@ export class CertService {
         }
       }),
       tap((certs) => {
-        if (!certs) {
-          this.modeService.setMode('empty');
-        }
+        // if (!certs) {
+        //   this.modeService.setMode('empty');
+        // }
       })
     );
   }

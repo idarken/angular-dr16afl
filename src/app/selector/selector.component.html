@@ -1,4 +1,4 @@
-<ng-container *ngIf="list.length > 0">
+<!-- <ng-container *ngIf="list.length > 0"> -->
   <div class="wrapper">
     <ng-container *ngFor="let item of list; trackBy: itemId">
       <div class="item {{ isActive(item) ? 'active' : '' }}" (click)="selectItem(item)">
@@ -11,4 +11,4 @@
     <button (click)="onAddNew()" *ngIf="mode === 'select'">Add</button>
     <button (click)="onCancel()" *ngIf="mode === 'drop'">Cancel</button>
   </div>
-</ng-container>
+<!-- </ng-container> -->
