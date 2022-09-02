@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModeService, AppMode } from './shared/mode.service';
 
 @Component({
@@ -6,12 +6,13 @@ import { ModeService, AppMode } from './shared/mode.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   mode!: AppMode;
 
-  constructor(private modeService: ModeService) {
+  constructor(private modeService: ModeService) {}
+
+  ngOnInit() {
     this.modeService.mode.subscribe((mode) => {
-      console.log(mode);
       this.mode = mode;
     });
   }
