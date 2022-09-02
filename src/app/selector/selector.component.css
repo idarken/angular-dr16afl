@@ -1,6 +1,7 @@
 .wrapper {
   border: 1px solid #000;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   max-height: 200px;
 }
 
@@ -18,6 +19,16 @@
 
 .item.active > .item-carret {
   float: right;
+}
+
+.item-label {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.active > .item-label {
+  max-width: calc(100% - 12px);
 }
 
 .button-wrapper {

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { switchMap, take, tap } from 'rxjs/operators';
-
 import ASN1 from '@lapo/asn1js';
 import { CertData } from './certificate.model';
 import { ModeService } from './mode.service';
@@ -37,9 +36,11 @@ export class CertService {
         }
       }),
       tap((certs) => {
-        // if (!certs) {
-        //   this.modeService.setMode('empty');
-        // }
+        if (!certs) {
+          this.modeService.setMode('empty');
+        } else {
+          this.modeService.setMode('select');
+        }
       })
     );
   }
